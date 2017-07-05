@@ -73,8 +73,9 @@
 #include "usart1.h"
 
 //CAN1云台，CAN2地盘电机
-#include "can1.h"
-#include "can2.h"
+//#include "can1.h"
+//#include "can2.h"
+#include "can.h"
 //timer2用于计时器
 #include "timer.h"
 

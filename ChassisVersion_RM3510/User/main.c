@@ -19,7 +19,6 @@ No   Version    Date     Revised By       Item       Description
 
 char buffer1[32];//用于串口printf，主要调试用；
 
-
 int main(void)
 {   
 		
@@ -27,21 +26,42 @@ int main(void)
 	
 		while(1)
 		{	
-		  
+			LED_RED_ON();
+			delay_ms(1000);
+			LED_GREEN_OFF();
+			delay_ms(1000);
+			
+			LED_RED_OFF();
+			delay_ms(1000);
+			LED_GREEN_ON();
+			delay_ms(1000);
+				
+				
+				
 			//串口测试例子
 			//delay_ms(50);
 			//printf("%d,%d\n",RM3510_1.thisPosition,RM3510_2.thisPosition);
 			//printf("%d,%d\n",RM3510_1.targetVelocity,RM3510_1.thisVelocity);
 			//printf("%d\n",Get_Time_Micros());
 			//printf(buffer1);
-			printf("StatusDemo: Wheel1:%12.6f,%5d; Wheel2:%12.6f,%5d; Wheel3:%12.6f,%5d; Wheel4:%12.6f,%5d;\n",RM3510_1.thisPosition,RM3510_1.thisVelocity,RM3510_2.thisPosition,RM3510_2.thisVelocity,RM3510_3.thisPosition,RM3510_3.thisVelocity,RM3510_4.thisPosition,RM3510_4.thisVelocity);
-			delay_ms(500);
 			
-	//	int	g=GetQuadEncoderDiff();
-			//	ShootMotorSpeedSet((int)Velocity_Control_Shoot(g,10));
-		//	sprintf(buffer1,"%d %d\n",g,PWM3);
-			//sprintf(buffer1,"%d %d\n",Yaw.thisAngle,Pitch.thisAngle);
-		//	printf(buffer1);
 			
+			
+			//printf("StatusDemo: Wheel1:%12.6f,%5d; Wheel2:%12.6f,%5d; Wheel3:%12.6f,%5d; Wheel4:%12.6f,%5d;\n\n\n",RM3510_1.thisPosition,RM3510_1.thisVelocity,RM3510_2.thisPosition,RM3510_2.thisVelocity,RM3510_3.thisPosition,RM3510_3.thisVelocity,RM3510_4.thisPosition,RM3510_4.thisVelocity);
+			delay_ms(1000);
+			//printf("DBUS:%d,%d,%d,%d,%d,%d", dbus.rc.ch0, dbus.rc.ch1, dbus.rc.ch2, dbus.rc.s1, dbus.key.v,dbus.mouse.x);
+			printf("A");
+
+
+
+
+		//	int	g=GetQuadEncoderDiff();
+				//	ShootMotorSpeedSet((int)Velocity_Control_Shoot(g,10));
+			//	sprintf(buffer1,"%d %d\n",g,PWM3);
+				//sprintf(buffer1,"%d %d\n",Yaw.thisAngle,Pitch.thisAngle);
+			//	printf(buffer1);
+				
 		}
 }
+
+
