@@ -85,6 +85,7 @@ void DMA2_Stream5_IRQHandler(void)
         DMA_ClearITPendingBit(DMA2_Stream5, DMA_IT_TCIF5);
 
         /*******************decode DBUS data*******************/
+				// printf("DBUS_Dec"); // IT SEEMS THAT ONLY WHEN CONNECTED THE RC, THIS WILL BE CALLED
         DBUS_Dec(&dbus,dbus_buf);
 			
 		}

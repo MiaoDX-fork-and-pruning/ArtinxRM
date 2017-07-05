@@ -4,8 +4,8 @@
   Create Date   :  2016/6/29
   Author        :  yf
   Description   :  usart3的配置，用于调试发送用，以及后期和ros通信部分
-									 -----USART3_TX-----PB10-----
-								 	 -----USART3_RX-----PB11-----
+									 -----USART3_TX-----PD8-----
+									 -----USART3_RX-----PD9-----
 									 配置gpio、usart初始化和nvic的usart3配置函数，
 									 用于调试的发送char，int，string函数
 									 
@@ -27,20 +27,20 @@ void USART3_Configuration(void)
 		GPIO_InitTypeDef  gpio;
 	   DMA_InitTypeDef   dma;
 	
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB | RCC_AHB1Periph_DMA1,ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD | RCC_AHB1Periph_DMA1,ENABLE);
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3,ENABLE);
 	
-	GPIO_PinAFConfig(GPIOB,GPIO_PinSource10,GPIO_AF_USART3);
-	GPIO_PinAFConfig(GPIOB,GPIO_PinSource11,GPIO_AF_USART3); 
+	GPIO_PinAFConfig(GPIOD,GPIO_PinSource8,GPIO_AF_USART3);
+	GPIO_PinAFConfig(GPIOD,GPIO_PinSource9,GPIO_AF_USART3); 
 	
-		gpio.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
+		gpio.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
 		gpio.GPIO_Mode = GPIO_Mode_AF;
     gpio.GPIO_OType = GPIO_OType_PP;
     gpio.GPIO_Speed = GPIO_Speed_100MHz;
     gpio.GPIO_PuPd = GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOB,&gpio);
+		GPIO_Init(GPIOD,&gpio);
 
-		usart3.USART_BaudRate =  9600;
+		usart3.USART_BaudRate =  115200;
 		usart3.USART_WordLength = USART_WordLength_8b;
 		usart3.USART_StopBits = USART_StopBits_1;
 		usart3.USART_Parity = USART_Parity_No;
