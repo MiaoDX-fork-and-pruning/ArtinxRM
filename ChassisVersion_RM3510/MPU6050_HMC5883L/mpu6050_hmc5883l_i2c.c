@@ -4,8 +4,15 @@
   Create Date   :  2016/6/29
   Author        :  yf
   Description   :  用于模拟mpu6050和hmc5883l的i2c过程
-										----I2C1----SCL----PB8---
-										----I2C1----SDA----PB9---
+										
+										----I2C1----SCL----PB8--- OLD
+										----I2C1----SDA----PB9--- OLD
+										
+										----SPI5_CS-----PF6----
+										----SPI_SCK-----PF7----
+										----SPI_MISO-----PF8----
+										----SPI_MOSI-----PF9----
+										
 -------------------------------Revision Histroy-----------------------------------
 No   Version    Date     Revised By       Item       Description   
 1     1.1       6/28       yf   			  i2c配置

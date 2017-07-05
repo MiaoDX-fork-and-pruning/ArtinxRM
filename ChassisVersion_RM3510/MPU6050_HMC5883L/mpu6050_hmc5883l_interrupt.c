@@ -64,6 +64,7 @@ void EXTI4_IRQHandler(void)
 				MPU6050_ReadData();//读取未滤波数据                                              
         MPU6050_Data_Filter();//主要是mpu6050加速度计的均值滤波和陀螺仪弧度制转换
 				
+				printf("\nMPU6050 iteruption ... \n");
 				
 				if(DBUS_Det(dbus))//rc开启判断
 				{		
