@@ -200,7 +200,7 @@ void CAN2_RX0_IRQHandler(void)
 void CanReceiveMsgProcess(CanRxMsg *rx_message)
 {
 	
-	printf("WELL");
+	//printf("WELL");
 	
 				  if((rx_message->IDE == CAN_Id_Standard)&&(rx_message->RTR == CAN_RTR_Data)&&(rx_message->DLC == 8))
         {		

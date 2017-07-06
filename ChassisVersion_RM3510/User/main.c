@@ -47,10 +47,12 @@ int main(void)
 			
 			
 			
-			//printf("StatusDemo: Wheel1:%12.6f,%5d; Wheel2:%12.6f,%5d; Wheel3:%12.6f,%5d; Wheel4:%12.6f,%5d;\n\n\n",RM3510_1.thisPosition,RM3510_1.thisVelocity,RM3510_2.thisPosition,RM3510_2.thisVelocity,RM3510_3.thisPosition,RM3510_3.thisVelocity,RM3510_4.thisPosition,RM3510_4.thisVelocity);
+			printf("\n\r\n\r\n\rStatusDemo: \n\rWheel1:%12.6f,%5d; \n\rWheel2:%12.6f,%5d; \n\rWheel3:%12.6f,%5d; \n\rWheel4:%12.6f,%5d;\n\r\n\r\n\r", \
+			RM3510_1.thisPosition,RM3510_1.thisVelocity,RM3510_2.thisPosition,RM3510_2.thisVelocity,RM3510_3.thisPosition,RM3510_3.thisVelocity,RM3510_4.thisPosition,RM3510_4.thisVelocity);
 			delay_ms(1000);
-			//printf("DBUS:%d,%d,%d,%d,%d,%d", dbus.rc.ch0, dbus.rc.ch1, dbus.rc.ch2, dbus.rc.s1, dbus.key.v,dbus.mouse.x);
-			printf("A");
+			
+			printf("\n\r\n\r\n\rDBUS:%d,%d,%d,%d,%d,%d\n\r\n\r\n\r", dbus.rc.ch0, dbus.rc.ch1, dbus.rc.ch2, dbus.rc.s1, dbus.key.v,dbus.mouse.x);
+			//printf("A");
 
 
 
