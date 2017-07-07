@@ -51,9 +51,9 @@ void  Initialization(void)
 		
     MPU6050_Gyro_calibration();//MPU6050校准
     
-		*/
-		MPU6050_HMC5883L_Interrupt_Configuration(); //HMC和MPU的中断配置
 		
+		MPU6050_HMC5883L_Interrupt_Configuration(); //HMC和MPU的中断配置
+		*/
 		
 		delay_ms(500);		
 		

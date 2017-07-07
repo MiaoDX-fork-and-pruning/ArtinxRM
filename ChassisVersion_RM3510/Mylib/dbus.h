@@ -72,5 +72,8 @@ extern DBUS dbus;//供其他文件使用dbus数据。原定义在usart1里。
 void DBUS_Enc(const DBUS* pdbus,unsigned char* pbuf);
 void DBUS_Dec(DBUS* pdbus,const unsigned char* pbuf);
 int DBUS_Det(DBUS dbus_detect);
+
+void DBUS_Print(const DBUS* pdbus);
+
 #endif
 

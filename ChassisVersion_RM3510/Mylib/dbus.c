@@ -63,3 +63,29 @@ int DBUS_Det(DBUS dbus_detect)//仅用s1和s2的有无来判断是否有dbus数据传输
 	else 
 		return 0;
 }
+
+
+void DBUS_Print(const DBUS* pdbus)
+{
+	printf("\n\r\n\r\n\rDBUS received:\n\r\n\r\n\r");
+	printf("ch0:%d\t", pdbus->rc.ch0);
+	printf("ch1:%d\t", pdbus->rc.ch1);
+	printf("ch2:%d\t", pdbus->rc.ch2);
+	printf("ch3:%d\t", pdbus->rc.ch3);
+	
+	printf("s1:%d\t", pdbus->rc.s1);
+	printf("s2:%d\t", pdbus->rc.s2);
+	printf("ch2:%d\t", pdbus->rc.ch2);
+	
+	
+	printf("mouse.x:%d\t", pdbus->mouse.x);
+	printf("mouse.y:%d\t", pdbus->mouse.y);
+	printf("mouse.z:%d\t", pdbus->mouse.z);
+	
+	printf("mouse.l:%d\t", pdbus->mouse.l);
+	printf("mouse.r:%d\t", pdbus->mouse.r);
+  
+	printf("key.v:%d\t", pdbus->key.v);
+  
+	printf("res:%d\t", pdbus->res);
+}

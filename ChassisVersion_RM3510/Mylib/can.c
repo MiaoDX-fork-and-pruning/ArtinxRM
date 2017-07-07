@@ -260,7 +260,8 @@ void Cmd_ESC_820R(int16_t current_201,int16_t current_202,int16_t current_203,in
     tx_message.Data[7] = (unsigned char)current_204;
     
     //can2_tx_success_flag = 0;
-    CAN_Transmit(CAN2,&tx_message);
+    //CAN_Transmit(CAN2,&tx_message);
+		CAN_Transmit(CAN1,&tx_message); // WE ARE USING CAN1 HERE!!!
     //while(can2_tx_success_flag == 0);
 }
 //µÃµ½½Ç¶È²î

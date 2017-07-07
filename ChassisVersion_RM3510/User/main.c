@@ -26,6 +26,8 @@ int main(void)
 	
 		while(1)
 		{	
+			
+			/*
 			LED_RED_ON();
 			delay_ms(1000);
 			LED_GREEN_OFF();
@@ -35,7 +37,7 @@ int main(void)
 			delay_ms(1000);
 			LED_GREEN_ON();
 			delay_ms(1000);
-				
+			*/
 				
 				
 			//´®¿Ú²âÊÔÀý×Ó
@@ -46,15 +48,43 @@ int main(void)
 			//printf(buffer1);
 			
 			
-			
+			/*
 			printf("\n\r\n\r\n\rStatusDemo: \n\rWheel1:%12.6f,%5d; \n\rWheel2:%12.6f,%5d; \n\rWheel3:%12.6f,%5d; \n\rWheel4:%12.6f,%5d;\n\r\n\r\n\r", \
 			RM3510_1.thisPosition,RM3510_1.thisVelocity,RM3510_2.thisPosition,RM3510_2.thisVelocity,RM3510_3.thisPosition,RM3510_3.thisVelocity,RM3510_4.thisPosition,RM3510_4.thisVelocity);
 			delay_ms(1000);
+			*/
 			
-			printf("\n\r\n\r\n\rDBUS:%d,%d,%d,%d,%d,%d\n\r\n\r\n\r", dbus.rc.ch0, dbus.rc.ch1, dbus.rc.ch2, dbus.rc.s1, dbus.key.v,dbus.mouse.x);
 			//printf("A");
-
-
+			
+			
+			LED_GREEN_TOGGLE();
+			if(DBUS_Det(dbus))//rc¿ªÆôÅÐ¶Ï
+				{		
+					
+					//printf("\n\r\n\r\n\rDBUS:%d,%d,%d,%d,%d,%d\n\r\n\r\n\r", dbus.rc.ch0, dbus.rc.ch1, dbus.rc.ch2, dbus.rc.s1, dbus.key.v,dbus.mouse.x);
+					//DBUS_Print(&dbus);
+					
+						if(dbus.rc.s2==2){
+							//printf(".");
+							move_control(dbus.rc.ch0, dbus.rc.ch1, dbus.rc.ch2, dbus.rc.s1, dbus.key.v,dbus.mouse.x);			
+						}
+						else if(dbus.rc.s2==1){
+							ChassisMotor_Position_Control(sdbus.w1,sdbus.w2,sdbus.w3,sdbus.w4);
+						}
+						else if(dbus.rc.s2==3){
+							RM3510_1.thisPosition=0;
+							RM3510_2.thisPosition=0;
+							RM3510_3.thisPosition=0;
+							RM3510_4.thisPosition=0;
+							sdbus.w1=0;
+							sdbus.w2=0;
+							sdbus.w3=0;
+							sdbus.w4=0;
+						}
+				}
+				
+			delay_ms(10);
+			//LED_RED_OFF();
 
 
 		//	int	g=GetQuadEncoderDiff();
