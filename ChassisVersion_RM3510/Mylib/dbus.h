@@ -74,6 +74,7 @@ void DBUS_Dec(DBUS* pdbus,const unsigned char* pbuf);
 int DBUS_Det(DBUS dbus_detect);
 
 void DBUS_Print(const DBUS* pdbus);
+void DBUS_Reset(DBUS* pdbus);
 
 #endif
 

@@ -498,6 +498,11 @@
               <FileType>1</FileType>
               <FilePath>..\Mylib\can.c</FilePath>
             </File>
+            <File>
+              <FileName>Controller.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Mylib\Controller.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

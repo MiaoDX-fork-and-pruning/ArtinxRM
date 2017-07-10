@@ -75,7 +75,7 @@ void DBUS_Print(const DBUS* pdbus)
 	
 	printf("s1:%d\t", pdbus->rc.s1);
 	printf("s2:%d\t", pdbus->rc.s2);
-	printf("ch2:%d\t", pdbus->rc.ch2);
+	
 	
 	
 	printf("mouse.x:%d\t", pdbus->mouse.x);
@@ -88,4 +88,17 @@ void DBUS_Print(const DBUS* pdbus)
 	printf("key.v:%d\t", pdbus->key.v);
   
 	printf("res:%d\t", pdbus->res);
+}
+
+void DBUS_Reset(DBUS* pdbus)
+{
+	memset(pdbus, 0, sizeof(SDBUS));
+	
+	
+	pdbus->rc.ch0=CH_VALUE_OFFSET;
+	pdbus->rc.ch1=CH_VALUE_OFFSET;
+	pdbus->rc.ch2=CH_VALUE_OFFSET;
+	pdbus->rc.ch3=CH_VALUE_OFFSET;
+	
+	//delay_ms(10);	
 }

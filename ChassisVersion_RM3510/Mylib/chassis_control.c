@@ -127,5 +127,21 @@ void move_control(uint16_t ch0, uint16_t ch1, uint16_t ch2, uint8_t s1, uint16_t
 	
 }
 
+void RM3510_DATA_Debug(const RM3510_DATA* pRM3510_DATA)
+{
+	printf("RM3510_DATA_Debug\n\r\n\r");
+	
+	
+	printf("thisAngle:%d\n\r", pRM3510_DATA->thisAngle);
+	
+	printf("lastAngle:%d\n\r",pRM3510_DATA->lastAngle);
+	printf("thisPosition:%f\n\r",pRM3510_DATA->thisPosition);
+	printf("thisVelocity:%d\n\r",pRM3510_DATA->thisVelocity);
+	printf("targetPosition:%d\n\r",pRM3510_DATA->targetPosition);
+	printf("targetVelocity:%d\n\r",pRM3510_DATA->targetVelocity);
+	printf("position_output:%f\n\r",pRM3510_DATA->position_output);
+	printf("velocity_output:%f\n\r",pRM3510_DATA->velocity_output);
+	printf("number:%d\n\r",pRM3510_DATA->number);
 
+}
 

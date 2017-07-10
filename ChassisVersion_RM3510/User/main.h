@@ -8,8 +8,8 @@
 
 
 //定义RM3510的pid
-#define ESC_820R_VEL_P 10.0//10.0
-#define ESC_820R_VEL_I 0.0
+#define ESC_820R_VEL_P 7.5//10.0
+#define ESC_820R_VEL_I 0.5
 #define ESC_820R_VEL_D 0.5//0.5
 #define ESC_820R_POS_P 100.0//10.0
 #define ESC_820R_POS_I 0.0
@@ -85,6 +85,7 @@
 #include "usart3.h"
 //控制
 #include "chassis_control.h"
+#include "Controller.h"
 //PID
 #include "pid_algorithm.h"
 //MPU6050 HMC5883L库

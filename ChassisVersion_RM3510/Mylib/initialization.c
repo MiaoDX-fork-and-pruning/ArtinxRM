@@ -30,7 +30,7 @@ void  Initialization(void)
 		CAN1_Configuration();//	Can1的配置，用于控制底盘
 		CAN2_Configuration();//Can2的配置，用于控制 Gimbal
 
-		delay_ms(500);    
+		delay_ms(500);  
 		
 		/*
 		while(MPU6050_Initialization() == 0xff || HMC5883L_Initialization() == 0xff) 

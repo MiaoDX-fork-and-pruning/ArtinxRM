@@ -16,6 +16,7 @@
 ".\objects\encoder.o"
 ".\objects\sdbus.o"
 ".\objects\can.o"
+".\objects\controller.o"
 ".\objects\misc.o"
 ".\objects\stm32f4xx_tim.o"
 ".\objects\stm32f4xx_adc.o"

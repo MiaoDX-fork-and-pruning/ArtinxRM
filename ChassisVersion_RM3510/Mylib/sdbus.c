@@ -35,3 +35,9 @@ void SDBUS_Dec(SDBUS* sdbus,const unsigned char* sdbuf)//sdbus½âÂë
 		sdbus->w3 = RM3510_3.thisPosition+sdbus->xf-sdbus->xtr+sdbus->xrr;
 		sdbus->w4 = -RM3510_4.thisPosition+sdbus->xf+sdbus->xtr-sdbus->xrr;
 }
+
+void SDBUS_Reset(SDBUS* psdbus)
+{
+	memset(psdbus, 0, sizeof(SDBUS));
+	//delay_ms(10);
+}

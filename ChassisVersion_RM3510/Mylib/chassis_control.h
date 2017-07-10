@@ -48,4 +48,8 @@ extern int moveSpeed;
 void TransMove(int x,int y,int z,long temp_speed);
 void move_control(uint16_t ch0, uint16_t ch1, uint16_t ch2, uint8_t s1, uint16_t v,int16_t x);
 
+void RM3510_DATA_RESET(RM3510_DATA* ptr_RM3510_DATA);
+
+void RM3510_DATA_Debug(const RM3510_DATA* ptr_RM3510_DATA);
+
 #endif

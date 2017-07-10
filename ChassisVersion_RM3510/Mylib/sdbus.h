@@ -17,4 +17,5 @@ extern SDBUS sdbus;
 
 void SDBUS_Enc(const SDBUS* sdbus,unsigned char* sdbuf);
 void SDBUS_Dec(SDBUS* sdbus,const unsigned char* sdbuf);
+void SDBUS_Reset(SDBUS* psdbus);
 #endif
