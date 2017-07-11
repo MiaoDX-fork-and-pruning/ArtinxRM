@@ -16,74 +16,129 @@ No   Version    Date     Revised By       Item       Description
 ************************************************************************************/
 #include "main.h"
 
-#define GAP 0.0
+//#define GAP 0.0
+
+/*
+WE are using the `static` value in each function as the `global` variables, so if we want to reset the PID, we should reset the static values.
+It is kind of ugly.
+
+*/
+
 
 /********************************************************************************
                            820R轴电调板的速度环控制
                       输入 820R轴当前速度 820R轴目标速度
 *********************************************************************************/
-float Velocity_Control_820R(float current_velocity_820R,float target_velocity_820R)
+float _Velocity_Control_820R(float current_velocity_820R,float target_velocity_820R, int num ,int reset)
 {
     const float l_p = ESC_820R_VEL_P;//7.0
     const float l_i = ESC_820R_VEL_I;//0.5
     const float l_d = ESC_820R_VEL_D;
 
-    static float error_l[2] = {0.0,0.0};
-    static float output = 0;
-    static float inte = 0;
+    static float error_l[4][2] = {0.0,0.0, 0.0,0.0, 0.0,0.0, 0.0,0.0};
+    static float inte[4] = {0.0, 0.0, 0.0, 0.0};
     
-    error_l[0] = error_l[1];
-    error_l[1] = target_velocity_820R - current_velocity_820R;
-    inte += error_l[1]; 
+		float output = 0;
+ 
+		num = num -1; // correct num
+		
+		if (reset == 1) {
+			int i = 0;
+			for(;i < 4; i++){
+				error_l[i][0] = 0.0;
+				error_l[i][1] = 0.0;
+				inte[i] = 0.0;
+			}
+			return 0.0; // Just return is OK
+		}
+		
+    error_l[num][0] = error_l[num][1];
+    error_l[num][1] = target_velocity_820R - current_velocity_820R;
+    inte[num] += error_l[num][1]; 
     
-    output = error_l[1] * l_p 
-            + inte * l_i 
-            + (error_l[1] - error_l[0]) * l_d;
+    output = error_l[num][1] * l_p 
+            + inte[num] * l_i 
+            + (error_l[num][1] - error_l[num][0]) * l_d;
+		
     
-    if(output > ESC_MAX)
+    if(output > ESC_MAX_VEL)
     {
-        output = ESC_MAX;
+        output = ESC_MAX_VEL;
     }
     
-    if(output < -ESC_MAX)
+    if(output < -ESC_MAX_VEL)
     {
-        output = -ESC_MAX;
+        output = -ESC_MAX_VEL;
     }
     		
     return output;
 }
+
+
+float Velocity_Control_820R(float current_velocity_820R,float target_velocity_820R, int motorNum)
+{
+	return _Velocity_Control_820R(current_velocity_820R, target_velocity_820R, motorNum, 0);
+}
+
+void Velocity_Control_820R_RESET(void)
+{
+	_Velocity_Control_820R(0.0, 0.0, 0, 1);
+}
+
+
 /********************************************************************************
                            820R电调板的位置环控制
                       输入 820R轴当前位置 820R轴目标位置
 *********************************************************************************/
-float Position_Control_820R(float current_position_820R,float target_position_820R)
+float _Position_Control_820R(float current_position_820R,float target_position_820R, int num, int reset)
 {
     const float l_p = ESC_820R_POS_P;
 		const float l_i = ESC_820R_POS_I;
 		const float l_d = ESC_820R_POS_D;
-    static float error_l[2] = {0.0,0.0};
-    static float output = 0;
-    static float inte = 0;
+    static float error_l[4][2] = {0.0,0.0, 0.0,0.0, 0.0,0.0, 0.0,0.0};
+    static float inte[4] = {0.0, 0.0, 0.0, 0.0};
     
-    error_l[0] = error_l[1];
-    error_l[1] = target_position_820R - current_position_820R;
-    inte += error_l[1]; 
+		float output = 0;
     
-    output = error_l[1] * l_p 
-            + inte * l_i 
-            + (error_l[1] - error_l[0]) * l_d;
+		num = num -1; // correct num
+		
+		if (reset == 1) {
+			int i = 0;
+			for(;i < 4; i++){
+				error_l[i][0] = 0.0;
+				error_l[i][1] = 0.0;
+				inte[i] = 0.0;
+			}
+			return 0.0; // Just return is OK
+		}
+		
+    error_l[num][0] = error_l[num][1];
+    error_l[num][1] = target_position_820R - current_position_820R;
+    inte[num] += error_l[num][1]; 
     
-    if(output > ESC_MAX)
+    output = error_l[num][1] * l_p 
+            + inte[num] * l_i 
+            + (error_l[num][1] - error_l[num][0]) * l_d;
+    
+    if(output > ESC_MAX_POS)
     {
-        output = ESC_MAX;
+        output = ESC_MAX_POS;
     }
     
-    if(output < -ESC_MAX)
+    if(output < -ESC_MAX_POS)
     {
-        output = -ESC_MAX;
+        output = -ESC_MAX_POS;
     }
     		
     return output;
 }
 
+float Position_Control_820R(float current_position_820R,float target_position_820R, int motorNum)
+{
+	return _Position_Control_820R(current_position_820R,target_position_820R, motorNum, 0);
+}
 
+void Position_Control_820R_RESET(void)
+{
+	_Position_Control_820R(0.0, 0.0, 0, 1);
+}

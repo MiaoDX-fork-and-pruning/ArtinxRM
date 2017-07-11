@@ -18,6 +18,12 @@ No   Version    Date     Revised By       Item       Description
 #include "main.h"
 int moveSpeed;//控制的速度RPM
 //初始化电机数据
+
+#define RM3510_1_NUM 1
+#define RM3510_2_NUM 2
+#define RM3510_3_NUM 3
+#define RM3510_4_NUM 4
+
 RM3510_DATA RM3510_1={0,0,0,0,0,0,0,0,1};
 RM3510_DATA RM3510_2={0,0,0,0,0,0,0,0,2};
 RM3510_DATA RM3510_3={0,0,0,0,0,0,0,0,3};
@@ -32,10 +38,10 @@ void ChassisMotor_Velocity_Control(float vel1,float vel2,float vel3,float vel4)
 	 RM3510_3.targetVelocity=vel3*19;
 	 RM3510_4.targetVelocity=-vel4*19;
 	
-	 RM3510_1.velocity_output = Velocity_Control_820R(RM3510_1.thisVelocity ,RM3510_1.targetVelocity);
-	 RM3510_2.velocity_output = Velocity_Control_820R(RM3510_2.thisVelocity ,RM3510_2.targetVelocity);
-	 RM3510_3.velocity_output = Velocity_Control_820R(RM3510_3.thisVelocity ,RM3510_3.targetVelocity);
-	 RM3510_4.velocity_output = Velocity_Control_820R(RM3510_4.thisVelocity ,RM3510_4.targetVelocity);
+	 RM3510_1.velocity_output = Velocity_Control_820R(RM3510_1.thisVelocity ,RM3510_1.targetVelocity, RM3510_1_NUM);
+	 RM3510_2.velocity_output = Velocity_Control_820R(RM3510_2.thisVelocity ,RM3510_2.targetVelocity, RM3510_2_NUM);
+	 RM3510_3.velocity_output = Velocity_Control_820R(RM3510_3.thisVelocity ,RM3510_3.targetVelocity, RM3510_3_NUM);
+	 RM3510_4.velocity_output = Velocity_Control_820R(RM3510_4.thisVelocity ,RM3510_4.targetVelocity, RM3510_4_NUM);
 	 
 	 Cmd_ESC_820R( RM3510_1.velocity_output, RM3510_2.velocity_output, RM3510_3.velocity_output, RM3510_4.velocity_output);
 
@@ -48,17 +54,17 @@ void ChassisMotor_Position_Control(float pos1,float pos2,float pos3,float pos4)
 	 RM3510_3.targetPosition=pos3;
 	 RM3510_4.targetPosition=-pos4;
 	
-	 RM3510_1.position_output = Position_Control_820R(RM3510_1.thisPosition, RM3510_1.targetPosition);
-	 RM3510_1.velocity_output = Velocity_Control_820R(RM3510_1.thisVelocity ,RM3510_1.position_output);
+	 RM3510_1.position_output = Position_Control_820R(RM3510_1.thisPosition, RM3510_1.targetPosition, RM3510_1_NUM);
+	 RM3510_1.velocity_output = Velocity_Control_820R(RM3510_1.thisVelocity ,RM3510_1.position_output, RM3510_1_NUM);
 	
-	 RM3510_2.position_output = Position_Control_820R(RM3510_2.thisPosition, RM3510_2.targetPosition);
-	 RM3510_2.velocity_output = Velocity_Control_820R(RM3510_2.thisVelocity ,RM3510_2.position_output);
+	 RM3510_2.position_output = Position_Control_820R(RM3510_2.thisPosition, RM3510_2.targetPosition, RM3510_2_NUM);
+	 RM3510_2.velocity_output = Velocity_Control_820R(RM3510_2.thisVelocity ,RM3510_2.position_output, RM3510_2_NUM);
 	 
-	 RM3510_3.position_output = Position_Control_820R(RM3510_3.thisPosition, RM3510_3.targetPosition);
-	 RM3510_3.velocity_output = Velocity_Control_820R(RM3510_3.thisVelocity ,RM3510_3.position_output);
+	 RM3510_3.position_output = Position_Control_820R(RM3510_3.thisPosition, RM3510_3.targetPosition, RM3510_3_NUM);
+	 RM3510_3.velocity_output = Velocity_Control_820R(RM3510_3.thisVelocity ,RM3510_3.position_output, RM3510_3_NUM);
 	 
-	 RM3510_4.position_output = Position_Control_820R(RM3510_4.thisPosition, RM3510_4.targetPosition);
-	 RM3510_4.velocity_output = Velocity_Control_820R(RM3510_4.thisVelocity ,RM3510_4.position_output);
+	 RM3510_4.position_output = Position_Control_820R(RM3510_4.thisPosition, RM3510_4.targetPosition, RM3510_4_NUM);
+	 RM3510_4.velocity_output = Velocity_Control_820R(RM3510_4.thisVelocity ,RM3510_4.position_output, RM3510_4_NUM);
 	 
 	 Cmd_ESC_820R( RM3510_1.velocity_output, RM3510_2.velocity_output, RM3510_3.velocity_output, RM3510_4.velocity_output);
 

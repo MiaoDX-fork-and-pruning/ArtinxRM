@@ -120,10 +120,17 @@ void Encoder_ResetAll(void)
 	RM3510_DATA_RESET(&RM3510_4);
 }
 
+void PID_ResetAll(void)
+{
+	Velocity_Control_820R_RESET();
+	Position_Control_820R_RESET();
+}
+
 void Controller_Reset(void)
 {
 	Encoder_ResetAll();
 	SDBUS_Reset(&sdbus);
 	DBUS_Reset(&dbus);
+	PID_ResetAll();
 }
 
