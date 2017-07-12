@@ -63,14 +63,20 @@ float _Velocity_Control_820R(float current_velocity_820R,float target_velocity_8
     
     if(output > ESC_MAX_VEL)
     {
-        output = ESC_MAX_VEL;
-    }
+			if(num == 2 || num == 3){
+				printf("> MAX:%f\n\r", output);
+			}
+			output = ESC_MAX_VEL;
+		}
     
     if(output < -ESC_MAX_VEL)
-    {
-        output = -ESC_MAX_VEL;
+    {	
+			if(num == 2 || num == 3){
+				printf("< -MAX:%f\n\r", output);
+			}
+			output = -ESC_MAX_VEL;
     }
-    		
+		printf("output:%f\n\r", output);
     return output;
 }
 
