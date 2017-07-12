@@ -5,8 +5,8 @@
   Author        :  yf
   Description   :  timer的配置，占用TIMER6，TIMER2和TIMER3。
 									 //Timer 2 32-bit counter (Regard as time counter) 
-									 //Timer Clock is 168MHz / 4 * 2 = 84M
-									 其中timer6用于中断控制云台，时间为100/84ms；
+									 //Timer Clock is 180MHz / 4 * 2 = 90M
+									 其中timer6用于中断控制云台，时间为100/90ms；
 									 timer2用于做计时器，时钟为1MHz；
 									 需要注意的是timer跑中断控制的，需要将中断控制使能放在main初始化的后面
 									 
@@ -23,7 +23,7 @@ void TIM2_Configuration(void)
     TIM_TimeBaseInitTypeDef tim;
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
     tim.TIM_Period = 0xFFFFFFFF;
-    tim.TIM_Prescaler = 84 - 1;	 //1M 的时钟  
+    tim.TIM_Prescaler = 90 - 1;	 //1M 的时钟  
     tim.TIM_ClockDivision = TIM_CKD_DIV1;	
     tim.TIM_CounterMode = TIM_CounterMode_Up;  
     TIM_ARRPreloadConfig(TIM2, ENABLE);	
